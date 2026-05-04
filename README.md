@@ -139,7 +139,6 @@ PENDENTE ──► CONFIRMADO ──► CONCLUIDO
 ### Pré-requisitos
 
 - Node.js 18+
-- Backend do ServiJá rodando em `http://localhost:8080`
 
 ### Instalação e execução
 
@@ -157,14 +156,13 @@ npm install
 npm run dev
 ```
 
-O app estará disponível em **http://localhost:3000**.
 
 ### Variáveis de ambiente
 
 Crie um arquivo `.env.local` na raiz do projeto:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=""
 ```
 
 <br />
@@ -189,7 +187,6 @@ NEXT_PUBLIC_API_URL=http://localhost:8080
 | `POST` | `/favoritos` | Favoritar prestador |
 | `DELETE` | `/favoritos/{id}` | Remover favorito |
 
-> Documentação completa disponível em `http://localhost:8080/swagger-ui.html` com o backend rodando.
 
 <br />
 

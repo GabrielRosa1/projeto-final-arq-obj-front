@@ -32,6 +32,7 @@ const AuthContext = createContext<AuthContextValue | null>(null)
 
 const TOKEN_KEY = 'servija_token'
 const USER_KEY = 'servija_user'
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null)
@@ -60,7 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     try {
       if (res.role === 'CLIENTE') {
-        const clientes = await fetch('http://localhost:8080/clientes', {
+        const clientes = await fetch(`${apiUrl}/clientes`, {
           headers: { Authorization: `Bearer ${newToken}` },
         }).then((r) => r.json() as Promise<Cliente[]>)
         const found = Array.isArray(clientes)
@@ -70,7 +71,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           authUser = { ...authUser, clienteId: found.id, nome: found.nome }
         }
       } else if (res.role === 'PRESTADOR') {
-        const prestadores = await fetch('http://localhost:8080/prestadores', {
+        const prestadores = await fetch(`${apiUrl}/prestadores`, {
           headers: { Authorization: `Bearer ${newToken}` },
         }).then((r) => r.json() as Promise<Prestador[]>)
         const found = Array.isArray(prestadores)

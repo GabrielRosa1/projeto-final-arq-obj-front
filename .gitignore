@@ -3,3 +3,7 @@ apidocs.json
 .claude
 CLAUDE.md
 AGENTS.md
+.agents
+.junie
+PRODUCT.md
+skills-lock.json

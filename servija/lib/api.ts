@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080'
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 function getToken(): string | null {
   if (typeof window === 'undefined') return null
@@ -18,7 +18,7 @@ async function request<T>(
     headers['Authorization'] = `Bearer ${token}`
   }
 
-  const res = await fetch(`${BASE_URL}${path}`, { ...options, headers })
+  const res = await fetch(`${apiUrl}${path}`, { ...options, headers })
 
   if (!res.ok) {
     let message = `HTTP ${res.status}`
