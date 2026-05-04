@@ -1,1 +1,4 @@
 .env
+apidocs.json
+.claude
+claude.md
