@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Menu, X, LogOut, ChevronDown } from 'lucide-react'
@@ -38,9 +39,17 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-semibold text-base text-ink tracking-tight shrink-0"
+          className="flex shrink-0 items-center"
+          aria-label="Ir para a página inicial"
         >
-          Servi<span className="text-brand">Já</span>
+          <Image
+            src="/logo.svg"
+            alt="ServiJá"
+            width={106}
+            height={40}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
         </Link>
 
         {/* Desktop nav links */}

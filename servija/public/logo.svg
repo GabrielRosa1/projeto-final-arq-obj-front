@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="45 30 450 170">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pin -->
+  <g transform="translate(30,20)">
+    <path d="M80 20
+             C50 20, 25 45, 25 75
+             C25 120, 80 180, 80 180
+             C80 180, 135 120, 135 75
+             C135 45, 110 20, 80 20 Z"
+          fill="url(#grad)"/>
+
+    <circle cx="80" cy="75" r="16" fill="white"/>
+  </g>
+
+  <!-- Texto -->
+  <text x="215" y="136"
+        font-family="Inter, Poppins, Arial"
+        font-size="76"
+        font-weight="700"
+        fill="#1F2937">
+    Servi<tspan fill="#4F46E5">Já</tspan>
+  </text>
+</svg>
