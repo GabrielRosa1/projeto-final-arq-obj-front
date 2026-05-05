@@ -28,7 +28,7 @@ function AgendamentosContent() {
   const [agendamentos, setAgendamentos] = useState<Agendamento[]>([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<AppointmentStatus | 'ALL'>('ALL')
-  const [actionLoading, setActionLoading] = useState<number | null>(null)
+  const [actionLoading, setActionLoading] = useState<string | null>(null)
 
   const load = useCallback(async () => {
     if (!user?.prestadorId) return
@@ -44,7 +44,7 @@ function AgendamentosContent() {
 
   useEffect(() => { load() }, [load])
 
-  const doAction = async (id: number, fn: (id: number) => Promise<unknown>, msg: string) => {
+  const doAction = async (id: string, fn: (id: string) => Promise<unknown>, msg: string) => {
     setActionLoading(id)
     try { await fn(id); success(msg); load() }
     catch { toastError('Erro ao executar ação') }

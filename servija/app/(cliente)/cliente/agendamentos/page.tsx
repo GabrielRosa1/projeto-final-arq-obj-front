@@ -30,8 +30,8 @@ function AgendamentosContent() {
   const [agendamentos, setAgendamentos] = useState<Agendamento[]>([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<AppointmentStatus | 'ALL'>('ALL')
-  const [avaliadosIds, setAvaliadosIds] = useState<Set<number>>(new Set())
-  const [actionLoading, setActionLoading] = useState<number | null>(null)
+  const [avaliadosIds, setAvaliadosIds] = useState<Set<string>>(new Set())
+  const [actionLoading, setActionLoading] = useState<string | null>(null)
 
   const load = useCallback(async () => {
     if (!user?.clienteId) return
@@ -54,7 +54,7 @@ function AgendamentosContent() {
 
   useEffect(() => { load() }, [load])
 
-  const handleCancelar = async (id: number) => {
+  const handleCancelar = async (id: string) => {
     setActionLoading(id)
     try { await agendamentosApi.cancelar(id); success('Agendamento cancelado'); load() }
     catch { toastError('Erro ao cancelar') }

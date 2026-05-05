@@ -22,7 +22,7 @@ const paymentLabels = {
 } as const
 
 export function AppointmentCard({ agendamento, viewAs, actions }: AppointmentCardProps) {
-  const PayIcon = paymentIcons[agendamento.formaPagamento]
+  const dataExibicao = agendamento.dataHoraInicio
 
   return (
     <div className="bg-card border border-border rounded-xl p-5 shadow-sm shadow-black/[0.03] transition-shadow duration-200 hover:shadow-md">
@@ -41,21 +41,23 @@ export function AppointmentCard({ agendamento, viewAs, actions }: AppointmentCar
       </div>
 
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-        <span className="inline-flex items-center gap-1 text-xs text-muted">
-          <Calendar size={12} strokeWidth={1.75} />
-          {formatDate(agendamento.dataHora)}
-        </span>
+        {dataExibicao && (
+          <span className="inline-flex items-center gap-1 text-xs text-muted">
+            <Calendar size={12} strokeWidth={1.75} />
+            {formatDate(dataExibicao)}
+          </span>
+        )}
         {agendamento.servicoPreco != null && (
           <span className="inline-flex items-center gap-1 text-xs text-muted tabular-nums">
-            <PayIcon size={12} strokeWidth={1.75} />
-            {formatCurrency(agendamento.servicoPreco)} · {paymentLabels[agendamento.formaPagamento]}
+            <Coins size={12} strokeWidth={1.75} />
+            {formatCurrency(agendamento.servicoPreco)}
           </span>
         )}
       </div>
 
-      {agendamento.observacao && (
+      {agendamento.observacaoCliente && (
         <p className="mt-2 text-xs text-subtle italic leading-relaxed">
-          {agendamento.observacao}
+          {agendamento.observacaoCliente}
         </p>
       )}
 
