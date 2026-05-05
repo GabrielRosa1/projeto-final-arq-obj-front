@@ -15,7 +15,7 @@ export default function RegistroPage() {
   const searchParams = useSearchParams()
   const defaultTipo = (searchParams.get('tipo')?.toUpperCase() as Tipo) ?? 'CLIENTE'
 
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, login } = useAuth()
   const { success, error: toastError } = useToast()
   const router = useRouter()
 
@@ -93,8 +93,9 @@ export default function RegistroPage() {
           estado: form.estado || undefined,
         })
       }
-      success('Conta criada! Faça login para continuar.')
-      router.push('/login')
+      await login(form.email, form.senha, tipo)
+      success('Conta criada com sucesso!')
+      router.push(tipo === 'PRESTADOR' ? '/prestador/dashboard' : '/cliente/agendamentos')
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Erro ao criar conta'
       setFormError(msg)
