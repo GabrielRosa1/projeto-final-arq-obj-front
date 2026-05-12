@@ -3,6 +3,7 @@
 <br />
 
 # ServiJá
+# Gabriel Rosa, Lucas Bressanin, Murilo Godoy, João Pedro Baungartner e João Pedro Vivacqua
 
 **Plataforma de conexão entre clientes e prestadores de serviços locais**
 
